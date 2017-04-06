@@ -24,7 +24,7 @@ order by ordinal_position
 select 'GRANT '|| privilege_type ||' ON TABLE dss_phist.${tablename} TO ' ||grantee||';' from INFORMATION_SCHEMA.role_table_grants where  
 table_schema='dss_phist' and  table_name='${tablename}'
 union all
-select 'COMMENT ON COLUMN dss_phist..' || b.attname || ' IS ''' || COALESCE(a.description,'') ||''';'
+select 'COMMENT ON COLUMN dss_phist.${tablename}.' || b.attname || ' IS ''' || COALESCE(a.description,'') ||''';'
         from pg_catalog.pg_description a,pg_catalog.pg_attribute b   
         where objoid='dss_phist.${tablename}'::regclass   
         and a.objoid=b.attrelid
