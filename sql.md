@@ -30,7 +30,8 @@ select 'COMMENT ON COLUMN dss_phist.${tablename}.' || b.attname || ' IS ''' || C
         and a.objoid=b.attrelid
         and a.objsubid=b.attnum
 
-3.搜索所有的表名
-SELECT   tablename   FROM   pg_tables
-WHERE   tablename    LIKE   '%_hd'
-ORDER   BY   tablename;
+3.列出所有的表名
+SELECT tablename FROM pg_tables WHERE tablename LIKE '%_hd' AND schemaname LIKE 'dss_phist' ORDER BY tablename;
+
+4.列出所有数据库
+SELECT datname FROM pg_database
