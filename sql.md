@@ -29,3 +29,8 @@ select 'COMMENT ON COLUMN dss_phist..' || b.attname || ' IS ''' || COALESCE(a.de
         where objoid='dss_phist.${tablename}'::regclass   
         and a.objoid=b.attrelid
         and a.objsubid=b.attnum
+
+3.搜索所有的表名
+SELECT   tablename   FROM   pg_tables
+WHERE   tablename    LIKE   '%_hd'
+ORDER   BY   tablename;
